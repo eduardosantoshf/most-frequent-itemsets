@@ -321,3 +321,5 @@ spark-warehouse/
 .ionide
 
 # End of https://www.toptal.com/developers/gitignore/api/spark,visualstudiocode,python,macos
+
+helpers/

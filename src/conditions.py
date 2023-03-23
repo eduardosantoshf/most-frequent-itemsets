@@ -2,7 +2,7 @@
 # @Author: Eduardo Santos
 # @Date:   2023-03-12 22:26:26
 # @Last Modified by:   Eduardo Santos
-# @Last Modified time: 2023-03-17 22:48:48
+# @Last Modified time: 2023-03-23 22:30:02
 
 import sys
 
@@ -152,7 +152,7 @@ if __name__ == "__main__":
     #                                BIGRAMS                                 #
     #                                                                        #
     ##########################################################################
-
+    
     filtered_diseases = first_support.map(lambda line: line[0]).collect()
 
     bigrams_support = baskets.flatMap(lambda basket: 
@@ -208,7 +208,8 @@ if __name__ == "__main__":
         with open("{0}/Top_10_Bigrams.csv".format("../results/bigrams"), "w+") as file:
             file.write("\n".join([b[0] for b in top10_bigrams]))
             
-        association_rules.saveAsTextFile("{0}/Association_Rules".format("../results/bigrams"))
+        format_time = datetime.now().strftime("%Y-%m-%dT%H:%M:%S")
+        association_rules.saveAsTextFile("{0}/Association_Rules {1}".format("../results/bigrams", format_time))
 
         printable5 = association_rules.collect()
 
@@ -276,7 +277,8 @@ if __name__ == "__main__":
         with open("{0}/Top_10_Trigrams.csv".format("../results/trigrams"), "w+") as file:
             file.write("\n".join([t[0] for t in top10_trigrams]))
 
-        association_rules.saveAsTextFile("{0}/Association_Rules".format("../results/trigrams"))
+        format_time = datetime.now().strftime("%Y-%m-%dT%H:%M:%S")
+        association_rules.saveAsTextFile("{0}/Association_Rules {1}".format("../results/trigrams", format_time))
 
         print("\nAssociation rules:\n")
         printable6 = association_rules.collect()
